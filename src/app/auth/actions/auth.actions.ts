@@ -1,14 +1,8 @@
-import { Action } from '@ngrx/store';
+import { createAction, union } from '@ngrx/store';
 
-export enum AuthActionTypes {
-  LoadAuths = '[Auth] Load Auths',
-  
-  
-}
+export const logout = createAction('[Auth] Logout');
+export const logoutConfirmation = createAction('[Auth] Logout Confirmation');
+export const logoutConfirmationDismiss = createAction('[Auth] Logout Confirmation Dismiss');
 
-export class LoadAuths implements Action {
-  readonly type = AuthActionTypes.LoadAuths;
-}
-
-
-export type AuthActions = LoadAuths;
+const all = union({ logout, logoutConfirmation, logoutConfirmationDismiss });
+export type AuthActionsUnion = typeof all;

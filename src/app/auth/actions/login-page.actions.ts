@@ -1,14 +1,6 @@
-import { Action } from '@ngrx/store';
+import { Credentials } from './../../core/models/users.model';
+import { createAction, props, union } from '@ngrx/store';
 
-export enum LoginPageActionTypes {
-  LoadLoginPages = '[LoginPage] Load LoginPages',
-  
-  
-}
+export const login = createAction('[Login Page] Login', props<{ credentials: Credentials }>());
 
-export class LoadLoginPages implements Action {
-  readonly type = LoginPageActionTypes.LoadLoginPages;
-}
-
-
-export type LoginPageActions = LoadLoginPages;
+export type loginPageActionsUnion = ReturnType<typeof login>;
