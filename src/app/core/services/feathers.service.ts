@@ -27,7 +27,7 @@ export class FeathersService {
 		return this._feathers.service(name);
 	}
 
-	public authentication(credentials: Credentials): Promise<any> {
+	public authentication(credentials?: Credentials): Promise<any> {
 		return this._feathers.authenticate(credentials);
 	}
 

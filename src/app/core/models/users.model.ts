@@ -1,6 +1,6 @@
 export interface Credentials {
-	email: string;
-	password: string;
+	email?: string;
+	password?: string;
 	strategy: string;
 }
 

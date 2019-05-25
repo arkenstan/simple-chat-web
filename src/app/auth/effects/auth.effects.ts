@@ -16,7 +16,19 @@ export class AuthEffects {
 		private dialog: MatDialog
 	) {}
 
-	@Effect() loginCheck$ = this.actions$.pipe(ofType(AuthActions.loginCheck.type));
+	@Effect()
+	loginCheck$ = this.actions$.pipe(
+		ofType(AuthActions.loginCheck.type),
+		switchMap(() => {
+			return this.authService
+				.loginCheck()
+				.then((res) => {
+					console.log(res);
+					return AuthApiActions.loginSuccess({ user: res });
+				})
+				.catch((err) => AuthApiActions.loginFailure({ error: err }));
+		})
+	);
 
 	@Effect()
 	login$ = this.actions$.pipe(
@@ -29,7 +41,7 @@ export class AuthEffects {
 					console.log(res);
 					return AuthApiActions.loginSuccess({ user: res });
 				})
-				.catch((err) => AuthApiActions.loginFailure(err));
+				.catch((err) => AuthApiActions.loginFailure({ error: err }));
 		})
 	);
 

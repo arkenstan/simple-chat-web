@@ -13,6 +13,10 @@ export class AuthService {
 		return this.feathers.authentication({ email, password, strategy: 'local' });
 	}
 
+	loginCheck(): Promise<any> {
+		return this.feathers.authentication();
+	}
+
 	logout(): Promise<any> {
 		return this.feathers.logout();
 	}
