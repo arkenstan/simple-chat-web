@@ -1,2 +1,2 @@
-export * from './users.model.ts';
-export * from './rooms.model.ts';
+export * from './users.model';
+export * from './rooms.model';

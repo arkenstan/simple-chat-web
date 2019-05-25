@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
+import { Credentials } from '@app/core/models';
 
 import * as featherRx from 'feathers-reactive';
 import * as io from 'socket.io-client';
@@ -20,18 +21,17 @@ export class FeathersService {
 			.configure(feathersSockClient(this._socket))
 			.configure(feathersAuthClient({ storage: window.localStorage }))
 			.configure(featherRx({ idField: '_id' }));
-  }
-  
-  public service(name:string){
-	  return this.feathers.service(name);
-  }
+	}
 
-  public authentication(credentials):Promise<any>{
-	  return this.feathers.authenticate(credentials);
-  }
+	public service(name: string) {
+		return this._feathers.service(name);
+	}
 
-  public logout():Promise<any>{
-	  return this.feathers.logout();
-  }
+	public authentication(credentials: Credentials): Promise<any> {
+		return this._feathers.authenticate(credentials);
+	}
 
+	public logout(): Promise<any> {
+		return this._feathers.logout();
+	}
 }

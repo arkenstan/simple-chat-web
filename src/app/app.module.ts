@@ -10,20 +10,24 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { CoreModule } from '@app/core/core.module';
+import { AuthModule } from '@app/auth/auth.module';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects])
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [ AppComponent ],
+	imports: [
+		BrowserModule,
+		AuthModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		StoreModule.forRoot(reducers, { metaReducers }),
+		// StoreRouterConnectingModule.forRoot(),
+		!environment.production ? StoreDevtoolsModule.instrument({ name: 'NgRx Chat App' }) : [],
+		EffectsModule.forRoot([ AppEffects ]),
+		CoreModule
+	],
+	providers: [],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
