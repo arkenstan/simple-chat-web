@@ -18,3 +18,5 @@ export function reducer(state = initialState, action: ChatActions.ChatsActionsUn
 			return state;
 	}
 }
+
+export const selectRooms = (state: State) => state.rooms;
