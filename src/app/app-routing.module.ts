@@ -4,8 +4,8 @@ import { AuthGuard } from '@app/auth/services/auth.guard';
 import { NotFoundComponent } from '@app/core/containers/not-found/not-found.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: 'main', pathMatch: 'full' },
-	{ path: 'main', loadChildren: '@app/main/main.module#MainModule', canActivate: [ AuthGuard ] },
+	{ path: '', redirectTo: 'rooms', pathMatch: 'full' },
+	{ path: 'rooms', loadChildren: '@app/rooms/rooms.module#RoomsModule', canActivate: [ AuthGuard ] },
 	{ path: '**', component: NotFoundComponent }
 ];
 

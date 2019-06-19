@@ -1,0 +1,19 @@
+<div class="main-room-wrapper">
+
+	<mat-toolbar color="primary">
+		<span>Simple Chat</span>
+		<span class="spacer"></span>
+		<button mat-icon-button [matMenuTriggerFor]="menu" ><mat-icon>more_vert</mat-icon></button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item (click)="logoutUser()" >
+				<mat-icon>logout</mat-icon>
+				<span>Logout</span>
+			</button>
+		</mat-menu>
+	</mat-toolbar>
+
+	<div class="router-container">
+		<router-outlet></router-outlet>
+		</div>
+
+</div>

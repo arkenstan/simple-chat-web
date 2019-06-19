@@ -1,0 +1,10 @@
+.rooms-container {
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	app-room {
+		width: 100%;
+		max-width: 260px;
+		margin: 10px;
+	}
+}

@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCardModule } from '@angular/material';
+import {
+	MatFormFieldModule,
+	MatInputModule,
+	MatButtonModule,
+	MatIconModule,
+	MatCardModule,
+	MatToolbarModule,
+	MatMenuModule
+} from '@angular/material';
 
 @NgModule({
-	exports: [ MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule ]
+	exports: [ MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule ]
 })
 export class MaterialModule {}
 
@@ -10,3 +18,8 @@ export class MaterialModule {}
 	exports: [ MatCardModule ]
 })
 export class AuthMaterialModule {}
+
+@NgModule({
+	exports: [ MatCardModule ]
+})
+export class RoomsMaterial {}

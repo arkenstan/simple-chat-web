@@ -23,7 +23,6 @@ export class AuthEffects {
 			return this.authService
 				.loginCheck()
 				.then((res) => {
-					console.log(res);
 					return AuthApiActions.loginSuccess({ user: res });
 				})
 				.catch((err) => AuthApiActions.loginFailure({ error: err }));
@@ -38,7 +37,6 @@ export class AuthEffects {
 			return this.authService
 				.login(auth)
 				.then((res) => {
-					console.log(res);
 					return AuthApiActions.loginSuccess({ user: res });
 				})
 				.catch((err) => AuthApiActions.loginFailure({ error: err }));
@@ -55,8 +53,22 @@ export class AuthEffects {
 	loginRedirect$ = this.actions$.pipe(
 		ofType(AuthApiActions.loginRedirect.type, AuthActions.logout.type),
 		tap((authed) => {
-			console.log('TCL: AuthEffects -> authed', authed);
 			this.router.navigate([ 'login' ]);
+		})
+	);
+
+	@Effect({ dispatch: false })
+	logout$ = this.actions$.pipe(
+		ofType(AuthActions.logout.type),
+		switchMap(() => {
+			return this.authService
+				.logout()
+				.then((res) => {
+					console.log(res);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		})
 	);
 }
