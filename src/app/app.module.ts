@@ -21,7 +21,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 		AuthModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
-		StoreModule.forRoot(reducers, { metaReducers }),
+		StoreModule.forRoot(reducers, { metaReducers, runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true } }),
 		// StoreRouterConnectingModule.forRoot(),
 		!environment.production ? StoreDevtoolsModule.instrument({ name: 'NgRx Chat App' }) : [],
 		EffectsModule.forRoot([ AppEffects ]),
